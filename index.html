@@ -1,0 +1,2167 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mina & maria</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+    .open-names,
+.open-small,
+.open-date,
+.names,
+.section-title,
+.final-title {
+    visibility: hidden;
+}
+
+.fonts-loaded .open-names,
+.fonts-loaded .open-small,
+.fonts-loaded .open-date,
+.fonts-loaded .names,
+.fonts-loaded .section-title,
+.fonts-loaded .final-title {
+    visibility: visible;
+}
+
+/* ================================
+   RESET
+================================ */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#fffaf7;
+    color:#4b3b40;
+    font-family:"Montserrat",sans-serif;
+    overflow-x:hidden;
+}
+
+body.arabic{
+    font-family:"Cairo",sans-serif;
+    direction:rtl;
+}
+
+.ar{
+    display:none;
+}
+
+.en{
+    display:inline;
+}
+
+body.arabic .ar{
+    display:inline;
+}
+
+body.arabic .en{
+    display:none;
+}
+
+
+/* ================================
+   OPENING
+================================ */
+
+#opening{
+
+    position:fixed;
+    inset:0;
+
+    width:100%;
+    height:100vh;
+
+    z-index:99999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #fffefd 0%,
+            #fff6f2 55%,
+            #fce9e7 100%
+        );
+
+    transition:
+        opacity .7s ease,
+        visibility .7s ease;
+}
+
+
+/* Soft decoration */
+
+#opening::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:22px;
+
+    border:1px solid
+        rgba(190,115,135,.25);
+
+    border-radius:30px;
+
+    pointer-events:none;
+}
+
+
+#opening::after{
+
+    content:"♡";
+
+    position:absolute;
+
+    top:7%;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    color:#c9869b;
+
+    font-size:30px;
+
+}
+
+
+/* ================================
+   OPENING CARD
+================================ */
+
+.open-content{
+
+    position:relative;
+
+    z-index:5;
+
+    width:min(90%,650px);
+
+    padding:65px 30px;
+
+    background:
+        rgba(255,255,255,.78);
+
+    border:1px solid
+        rgba(190,115,135,.20);
+
+    border-radius:
+        100px
+        100px
+        35px
+        35px;
+
+    box-shadow:
+        0 25px 80px
+        rgba(160,100,110,.14);
+}
+
+
+.open-small{
+
+    font-size:10px;
+
+    letter-spacing:6px;
+
+    color:#b9798d;
+
+    margin-bottom:25px;
+}
+
+
+.open-names{
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:
+        clamp(65px,14vw,110px);
+
+    line-height:.9;
+
+    font-weight:400;
+
+    color:#5a4149;
+}
+
+
+.open-and{
+
+    color:#c9859b;
+
+    margin:0 12px;
+
+    font-size:.55em;
+}
+
+
+.open-date{
+
+    margin-top:35px;
+
+    font-size:12px;
+
+    letter-spacing:5px;
+
+    color:#92747d;
+}
+
+
+.open-button{
+
+    margin-top:40px;
+
+    padding:16px 45px;
+
+    border:none;
+
+    border-radius:100px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #bd718d,
+            #dda2b3
+        );
+
+    color:white;
+
+    font-family:"Montserrat",sans-serif;
+
+    font-size:11px;
+
+    letter-spacing:2px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 12px 35px
+        rgba(189,113,141,.25);
+
+    transition:.3s;
+}
+
+
+.open-button:hover{
+
+    transform:
+        translateY(-4px)
+        scale(1.03);
+}
+
+
+#opening.hide{
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+}
+
+
+/* ================================
+   MAIN SITE
+================================ */
+
+#mainSite{
+
+    position:relative;
+
+    min-height:100vh;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+    transition:
+        opacity .8s ease,
+        visibility .8s ease;
+
+    background:#fffaf7;
+}
+
+
+#mainSite.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+    pointer-events:auto;
+}
+
+
+/* ================================
+   LIGHT OVERLAY
+================================ */
+
+#mainSite::before{
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    width:100%;
+    height:100dvh;
+
+    background:
+        linear-gradient(
+            rgba(255,250,247,.20),
+            rgba(255,250,247,.72)
+        ),
+        url("cc.jpeg") center center / cover no-repeat;
+
+    pointer-events:none;
+
+    z-index:0;
+    transform:translateZ(0);
+}
+
+
+/* ================================
+   CONTROLS
+================================ */
+
+.controls{
+
+    position:fixed;
+
+    top:20px;
+    right:20px;
+
+    z-index:1000;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+}
+
+
+.control{
+
+    width:48px;
+    height:48px;
+
+    border-radius:50%;
+
+    border:1px solid
+        rgba(180,110,130,.22);
+
+    background:
+        rgba(255,255,255,.88);
+
+    color:#8d5268;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 8px 25px
+        rgba(120,70,80,.12);
+
+    transition:.3s;
+}
+
+
+.control:hover{
+
+    transform:scale(1.08);
+
+    background:#fff;
+}
+
+
+/* ================================
+   HERO
+================================ */
+
+.hero{
+
+    position:relative;
+
+    z-index:2;
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:110px 20px;
+
+    background:
+        rgba(255,250,247,.22);
+}
+
+
+.hero-small{
+
+    color:#b9798d;
+
+    font-size:10px;
+
+    letter-spacing:7px;
+
+    margin-bottom:35px;
+}
+
+
+.names{
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:
+        clamp(75px,15vw,150px);
+
+    line-height:.85;
+
+    font-weight:400;
+
+    color:#60454e;
+
+    text-shadow:
+        0 3px 20px
+        rgba(120,70,80,.10);
+}
+
+
+.names .and{
+
+    color:#c9859b;
+
+    margin:0 20px;
+
+    font-size:.55em;
+}
+
+
+.hero-line{
+
+    width:220px;
+
+    height:1px;
+
+    margin:55px auto 25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #ce8ca2,
+            transparent
+        );
+}
+
+
+.hero-text{
+
+    color:#806a71;
+
+    font-size:14px;
+
+    line-height:2;
+}
+
+
+/* ================================
+   SECTIONS
+================================ */
+
+.section{
+
+    position:relative;
+
+    z-index:2;
+
+    padding:110px 20px;
+
+    text-align:center;
+
+    background:
+        rgba(255,250,247,.82);
+}
+
+
+.section:nth-of-type(even){
+
+    background:
+        rgba(255,245,243,.88);
+}
+
+
+.section-label{
+
+    font-size:10px;
+
+    letter-spacing:6px;
+
+    color:#bd7a90;
+
+    margin-bottom:20px;
+}
+
+
+.section-title{
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:
+        clamp(55px,9vw,90px);
+
+    font-weight:400;
+
+    color:#75505d;
+
+    margin-bottom:20px;
+}
+
+
+body.arabic .section-title{
+
+    font-family:"Cairo",sans-serif;
+
+    font-weight:300;
+}
+
+
+.section-description{
+
+    max-width:650px;
+
+    margin:auto;
+
+    color:#8b777d;
+
+    line-height:2;
+
+    font-size:14px;
+}
+
+
+/* ================================
+   COUNTDOWN
+================================ */
+
+.countdown{
+
+    max-width:1000px;
+
+    margin:60px auto 0;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:18px;
+}
+
+
+.count-box{
+
+    padding:40px 15px;
+
+    background:
+        rgba(255,255,255,.88);
+
+    border:
+        1px solid
+        rgba(190,115,135,.18);
+
+    border-radius:
+        45px
+        12px
+        45px
+        12px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(140,90,100,.08);
+
+    transition:.3s;
+}
+
+
+.count-box:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:
+        0 20px 50px
+        rgba(140,90,100,.13);
+}
+
+
+.count-number{
+
+    display:block;
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:65px;
+
+    color:#bd718d;
+}
+
+
+.count-label{
+
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    color:#927b82;
+}
+
+
+/* ================================
+   CALENDAR
+================================ */
+
+.calendar{
+
+    max-width:620px;
+
+    margin:55px auto 0;
+
+    padding:40px;
+
+    background:
+        rgba(255,255,255,.90);
+
+    border:
+        1px solid
+        rgba(190,115,135,.18);
+
+    border-radius:55px;
+
+    box-shadow:
+        0 20px 60px
+        rgba(140,90,100,.08);
+}
+
+
+.month{
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:50px;
+
+    color:#bd718d;
+
+    margin-bottom:30px;
+}
+
+
+.weekdays,
+.days{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(7,1fr);
+
+    gap:7px;
+}
+
+
+.weekdays div{
+
+    font-size:9px;
+
+    color:#aa9099;
+
+    padding:8px;
+}
+
+
+.days div{
+
+    position:relative;
+
+    aspect-ratio:1;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#806d74;
+
+    font-size:13px;
+}
+
+
+.empty{
+
+    visibility:hidden;
+}
+
+
+.wedding-day{
+
+    position:relative;
+
+    z-index:2;
+
+    color:#fff !important;
+
+    font-weight:600;
+}
+
+
+.heart-day{
+
+    position:absolute;
+
+    width:27px;
+    height:24px;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-42%)
+        rotate(-45deg);
+
+    background:#d886a1;
+
+    border-radius:
+        4px 0 4px 0;
+
+    z-index:-1;
+}
+
+
+.heart-day::before,
+.heart-day::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:27px;
+    height:24px;
+
+    background:#d886a1;
+
+    border-radius:50%;
+}
+
+
+.heart-day::before{
+
+    top:-12px;
+    left:0;
+}
+
+
+.heart-day::after{
+
+    top:0;
+    left:13.5px;
+}
+
+
+/* ================================
+   MEMORIES
+================================ */
+
+.memories{
+
+    max-width:1100px;
+
+    margin:60px auto 0;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:20px;
+}
+
+
+.memory{
+
+    height:430px;
+
+    overflow:hidden;
+
+    background:#f7e9e6;
+
+    border:
+        1px solid
+        rgba(190,115,135,.16);
+
+    border-radius:
+        50px
+        12px
+        50px
+        12px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(140,90,100,.08);
+}
+
+
+.memory:nth-child(2){
+
+    margin-top:50px;
+
+    border-radius:
+        12px
+        50px
+        12px
+        50px;
+}
+
+
+.memory img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.7s;
+}
+
+
+.memory:hover img{
+
+    transform:scale(1.06);
+}
+
+
+/* ================================
+   LOCATION
+================================ */
+
+.location-card{
+
+    max-width:850px;
+
+    margin:60px auto 0;
+
+    padding:65px 25px;
+
+    background:
+        rgba(255,255,255,.92);
+
+    border:
+        1px solid
+        rgba(190,115,135,.18);
+
+    border-radius:
+        85px
+        20px
+        85px
+        20px;
+
+    box-shadow:
+        0 20px 60px
+        rgba(140,90,100,.08);
+}
+
+
+.location-icon{
+
+    font-size:55px;
+
+    color:#c37b94;
+
+    margin-bottom:15px;
+}
+
+
+.location-title{
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:52px;
+
+    color:#75505d;
+
+    margin-bottom:15px;
+}
+
+
+.location-address{
+
+    color:#8b777d;
+
+    line-height:2;
+
+    margin-bottom:30px;
+}
+
+
+.map-button{
+
+    display:inline-block;
+
+    padding:15px 35px;
+
+    border-radius:100px;
+
+    text-decoration:none;
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #bd718d,
+            #dda2b3
+        );
+
+    transition:.3s;
+
+    box-shadow:
+        0 10px 30px
+        rgba(189,113,141,.18);
+}
+
+
+.map-button:hover{
+
+    transform:translateY(-4px);
+}
+
+
+.directions{
+
+    max-width:750px;
+
+    margin:30px auto 0;
+
+    padding:25px;
+
+    color:#8b777d;
+
+    line-height:2;
+
+    border-radius:30px;
+
+    background:
+        rgba(255,255,255,.85);
+
+    border:
+        1px solid
+        rgba(190,115,135,.14);
+}
+
+
+/* ================================
+   FINAL
+================================ */
+
+.final{
+
+    position:relative;
+
+    z-index:2;
+
+    min-height:75vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:100px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff7f3,
+            #fcebed
+        );
+}
+
+
+.final-heart{
+
+    font-size:75px;
+
+    color:#c77b95;
+
+    animation:
+        heartbeat 1.4s infinite;
+}
+
+
+@keyframes heartbeat{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.16);
+    }
+}
+
+
+.final-title{
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:
+        clamp(55px,9vw,90px);
+
+    font-weight:400;
+
+    color:#75505d;
+
+    margin:25px 0;
+}
+
+
+body.arabic .final-title{
+
+    font-family:"Cairo",sans-serif;
+
+    font-weight:300;
+}
+
+
+.final-text{
+
+    color:#8b777d;
+
+    line-height:2;
+}
+
+
+/* ================================
+   FLOATING HEARTS
+================================ */
+
+#hearts{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    z-index:100;
+}
+
+
+.heart{
+
+    position:absolute;
+
+    bottom:-50px;
+
+    color:#d987a2;
+
+    opacity:0;
+
+    animation:
+        heartUp linear forwards;
+
+    filter:
+        drop-shadow(
+            0 0 7px
+            rgba(220,130,160,.35)
+        );
+}
+
+
+@keyframes heartUp{
+
+    0%{
+
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(.5);
+
+        opacity:0;
+    }
+
+    15%{
+        opacity:.65;
+    }
+
+    50%{
+
+        transform:
+            translateY(-55vh)
+            translateX(60px)
+            rotate(180deg)
+            scale(1);
+    }
+
+    100%{
+
+        transform:
+            translateY(-115vh)
+            translateX(-60px)
+            rotate(360deg)
+            scale(1.2);
+
+        opacity:0;
+    }
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media(max-width:700px){
+
+    .countdown{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+
+    .memories{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .memory{
+
+        height:420px;
+    }
+
+
+    .memory:nth-child(2){
+
+        margin-top:0;
+    }
+
+
+    .calendar{
+
+        padding:25px 12px;
+    }
+
+
+    .location-card{
+
+        padding:55px 20px;
+    }
+
+
+    .open-content{
+
+        padding:55px 20px;
+    }
+
+
+    .names{
+
+        font-size:
+            clamp(65px,18vw,105px);
+    }
+
+
+    .open-names{
+
+        font-size:
+            clamp(60px,18vw,100px);
+    }
+
+}
+
+</style>
+
+<script>
+document.fonts.ready.then(function () {
+    document.body.classList.add("fonts-loaded");
+});
+</script>
+
+</head>
+
+<body>
+
+
+<!-- =================================
+     OPENING
+================================= -->
+
+<div id="opening">
+
+    <div class="open-content">
+
+        <div class="open-small">
+            A SPECIAL INVITATION
+        </div>
+
+
+        <div class="open-names">
+
+            Mina
+
+            <span class="open-and">
+                &
+            </span>
+
+            maria
+
+        </div>
+
+
+        <div class="open-date">
+            05 · 05 · 2027
+        </div>
+
+
+        <button
+            class="open-button"
+            onclick="openInvitation()">
+
+            OPEN INVITATION ♡
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =================================
+     MAIN SITE
+================================= -->
+
+<div id="mainSite">
+
+
+    <!-- CONTROLS -->
+
+    <div class="controls">
+
+        <button
+            class="control"
+            id="languageButton"
+            onclick="changeLanguage()">
+
+            ع
+
+        </button>
+
+
+        <button
+            class="control"
+            id="musicButton"
+            onclick="toggleMusic()">
+
+            ♫
+
+        </button>
+
+    </div>
+
+
+    <!-- HEARTS -->
+
+    <div id="hearts"></div>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div>
+
+            <div class="hero-small">
+
+                <span class="en">
+                    WEDDING INVITATION
+                </span>
+
+                <span class="ar">
+                    دعوة زفاف
+                </span>
+
+            </div>
+
+
+            <div class="names">
+
+                <span class="en">
+                    Mina
+                </span>
+
+                <span class="ar">
+                    مينا
+                </span>
+
+
+                <span class="and">
+                    &
+                </span>
+
+
+                <span class="en">
+                    maria
+                </span>
+
+                <span class="ar">
+                   ماريا
+                </span>
+
+            </div>
+
+
+            <div class="hero-line"></div>
+
+
+            <div class="hero-text">
+
+                <span class="en">
+
+                    Two hearts.
+                    One beautiful story.
+                    Forever begins here.
+
+                </span>
+
+                <span class="ar">
+
+                    قلبان...
+                    حكاية واحدة...
+                    وبداية للأبد.
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- COUNTDOWN -->
+
+    <section class="section">
+
+        <div class="section-label">
+
+            <span class="en">
+                THE COUNTDOWN
+            </span>
+
+            <span class="ar">
+                العد التنازلي
+            </span>
+
+        </div>
+
+
+        <h2 class="section-title">
+
+            <span class="en">
+                Until Our Day
+            </span>
+
+            <span class="ar">
+                حتى يومنا
+            </span>
+
+        </h2>
+
+
+        <p class="section-description">
+
+            <span class="en">
+                Every second brings us closer
+                to the moment we've been waiting for.
+            </span>
+
+            <span class="ar">
+                كل ثانية تقربنا أكثر
+                من اليوم الذي طال انتظاره.
+            </span>
+
+        </p>
+
+
+        <div class="countdown">
+
+            <div class="count-box">
+
+                <span
+                    class="count-number"
+                    id="days">
+                    0
+                </span>
+
+                <span class="count-label">
+
+                    <span class="en">
+                        DAYS
+                    </span>
+
+                    <span class="ar">
+                        يوم
+                    </span>
+
+                </span>
+
+            </div>
+
+
+            <div class="count-box">
+
+                <span
+                    class="count-number"
+                    id="hours">
+                    0
+                </span>
+
+                <span class="count-label">
+
+                    <span class="en">
+                        HOURS
+                    </span>
+
+                    <span class="ar">
+                        ساعة
+                    </span>
+
+                </span>
+
+            </div>
+
+
+            <div class="count-box">
+
+                <span
+                    class="count-number"
+                    id="minutes">
+                    0
+                </span>
+
+                <span class="count-label">
+
+                    <span class="en">
+                        MINUTES
+                    </span>
+
+                    <span class="ar">
+                        دقيقة
+                    </span>
+
+                </span>
+
+            </div>
+
+
+            <div class="count-box">
+
+                <span
+                    class="count-number"
+                    id="seconds">
+                    0
+                </span>
+
+                <span class="count-label">
+
+                    <span class="en">
+                        SECONDS
+                    </span>
+
+                    <span class="ar">
+                        ثانية
+                    </span>
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CALENDAR -->
+
+    <section class="section">
+
+        <div class="section-label">
+            SAVE THE DATE
+        </div>
+
+
+        <h2 class="section-title">
+
+            <span class="en">
+                May 2027
+            </span>
+
+            <span class="ar">
+                مايو ٢٠٢٧
+            </span>
+
+        </h2>
+
+
+        <p class="section-description">
+
+            <span class="en">
+                Wednesday · May 5th · 2027
+            </span>
+
+            <span class="ar">
+                الأربعاء · ٥ مايو · ٢٠٢٧
+            </span>
+
+        </p>
+
+
+        <div class="calendar">
+
+            <div class="month">
+                May 2027
+            </div>
+
+
+            <div class="weekdays">
+
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+
+            </div>
+
+
+            <div class="days">
+
+                <div class="empty">0</div>
+                <div class="empty">0</div>
+                <div class="empty">0</div>
+
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+
+
+                <div class="wedding-day">
+
+                    <span class="heart-day"></span>
+
+                    5
+
+                </div>
+
+
+                <div>6</div>
+                <div>7</div>
+                <div>8</div>
+                <div>9</div>
+                <div>10</div>
+                <div>11</div>
+                <div>12</div>
+                <div>13</div>
+                <div>14</div>
+                <div>15</div>
+                <div>16</div>
+                <div>17</div>
+                <div>18</div>
+                <div>19</div>
+                <div>20</div>
+                <div>21</div>
+                <div>22</div>
+                <div>23</div>
+                <div>24</div>
+                <div>25</div>
+                <div>26</div>
+                <div>27</div>
+                <div>28</div>
+                <div>29</div>
+                <div>30</div>
+                <div>31</div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MEMORIES -->
+
+    <section class="section">
+
+        <div class="section-label">
+            OUR MEMORIES
+        </div>
+
+
+        <h2 class="section-title">
+
+            <span class="en">
+                Beautiful Moments
+            </span>
+
+            <span class="ar">
+                أجمل اللحظات
+            </span>
+
+        </h2>
+
+
+        <p class="section-description">
+
+            <span class="en">
+                A few beautiful moments
+                from our story.
+            </span>
+
+            <span class="ar">
+                بعض اللحظات الجميلة
+                من حكايتنا.
+            </span>
+
+        </p>
+
+
+        <div class="memories">
+
+            <div class="memory">
+
+                <img
+                    src="WhatsApp Im.jpeg"
+                    alt="Memory">
+
+            </div>
+
+
+            <div class="memory">
+
+                <img
+                    src="WhatsApp Im1.jpeg"
+                    alt="Memory">
+
+            </div>
+
+
+            <div class="memory">
+
+                <img
+                    src="WhatsApp Im2.jpeg"
+                    alt="Memory">
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LOCATION -->
+
+    <section class="section">
+
+        <div class="section-label">
+            THE VENUE
+        </div>
+
+
+        <h2 class="section-title">
+
+            <span class="en">
+                Where We Meet
+            </span>
+
+            <span class="ar">
+                أين نلتقي
+            </span>
+
+        </h2>
+
+
+        <p class="section-description">
+
+            <span class="en">
+                We would love to have you
+                with us on this special day.
+            </span>
+
+            <span class="ar">
+                نتمنى أن تكونوا معنا
+                في هذا اليوم المميز.
+            </span>
+
+        </p>
+
+
+        <div class="location-card">
+
+            <div class="location-icon">
+                ♡
+            </div>
+
+
+            <div class="location-title">
+
+                <span class="en">
+                    Wedding Venue
+                </span>
+
+                <span class="ar">
+                    مكان الاحتفال
+                </span>
+
+            </div>
+
+
+            <div class="location-address">
+
+                <span class="en">
+
+                    Your Venue Name
+                    <br>
+                    Cairo, Egypt
+
+                </span>
+
+                <span class="ar">
+
+                    اسم القاعة
+                    <br>
+                    القاهرة، مصر
+
+                </span>
+
+            </div>
+
+
+            <!--
+              غيّر الرابط ده لرابط Google Maps
+              بتاع مكان الفرح
+            -->
+
+            <a
+                href="https://www.google.com/maps/place/30%C2%B008'15.7%22N+31%C2%B018'38.0%22E/@30.137694,31.3127471,17z/data=!3m1!4b1!4m4!3m3!8m2!3d30.137694!4d31.3105584?hl=ar&entry=ttu&g_ep=EgoyMDI2MDkyNy4xIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                class="map-button">
+
+                📍
+
+                <span class="en">
+                    OPEN LOCATION
+                </span>
+
+                <span class="ar">
+                    افتح الموقع
+                </span>
+
+            </a>
+
+        </div>
+
+
+        <div class="directions">
+
+            <strong>
+
+                <span class="en">
+                    HOW TO GET THERE
+                </span>
+
+                <span class="ar">
+                    كيفية الوصول
+                </span>
+
+            </strong>
+
+
+            <br><br>
+
+
+            <span class="en">
+                Add the directions to your venue here.
+            </span>
+
+            <span class="ar">
+                اكتب هنا طريقة الوصول إلى القاعة.
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- FINAL -->
+
+    <section class="final">
+
+        <div>
+
+            <div class="final-heart">
+                ♡
+            </div>
+
+
+            <h2 class="final-title">
+
+                <span class="en">
+
+                    Your Presence
+                    <br>
+                    Completes Our Joy
+
+                </span>
+
+                <span class="ar">
+
+                    وجودكم
+                    <br>
+                    يكمل فرحتنا
+
+                </span>
+
+            </h2>
+
+
+            <div class="hero-line"></div>
+
+
+            <div class="final-text">
+
+                <span class="en">
+
+                    With all our love,
+                    we can't wait to celebrate
+                    this beautiful day with you.
+
+                    <br><br>
+
+                    Mina & maria
+
+                </span>
+
+
+                <span class="ar">
+
+                    بكل الحب...
+                    ننتظركم لنشارككم
+                    أجمل يوم في حياتنا.
+
+                    <br><br>
+
+                    مينا & ماريا
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</div>
+
+
+<!-- MUSIC -->
+
+<audio
+    id="music"
+    loop>
+
+    <source
+        src="WhatsApp Audio1.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+<script>
+
+/* ================================
+   ELEMENTS
+================================ */
+
+const opening =
+    document.getElementById("opening");
+
+const mainSite =
+    document.getElementById("mainSite");
+
+const music =
+    document.getElementById("music");
+
+const musicButton =
+    document.getElementById("musicButton");
+
+const hearts =
+    document.getElementById("hearts");
+
+
+/* ================================
+   OPEN
+================================ */
+
+function openInvitation(){
+
+    opening.classList.add("hide");
+
+    mainSite.classList.add("show");
+
+    music.play().catch(function(){
+
+        console.log("Audio waiting for permission.");
+
+    });
+
+    startHearts();
+
+}
+
+
+/* ================================
+   MUSIC
+================================ */
+
+function toggleMusic(){
+
+    if(music.paused){
+
+        music.play();
+
+        musicButton.innerHTML="♫";
+
+    }else{
+
+        music.pause();
+
+        musicButton.innerHTML="♪";
+
+    }
+
+}
+
+
+/* ================================
+   LANGUAGE
+================================ */
+
+function changeLanguage(){
+
+    document.body.classList.toggle("arabic");
+
+    const arabic =
+        document.body.classList.contains("arabic");
+
+    document.documentElement.lang =
+        arabic ? "ar" : "en";
+
+    document.documentElement.dir =
+        arabic ? "rtl" : "ltr";
+
+    document.getElementById(
+        "languageButton"
+    ).innerHTML =
+        arabic ? "EN" : "ع";
+
+}
+
+
+/* ================================
+   COUNTDOWN
+================================ */
+
+const weddingDate =
+    new Date(
+        "May 5, 2027 19:00:00"
+    ).getTime();
+
+
+function updateCountdown(){
+
+    const now =
+        new Date().getTime();
+
+    let distance =
+        weddingDate - now;
+
+    if(distance < 0){
+        distance=0;
+    }
+
+    const days =
+        Math.floor(
+            distance /
+            (1000*60*60*24)
+        );
+
+    const hours =
+        Math.floor(
+            (distance %
+            (1000*60*60*24))
+            /
+            (1000*60*60)
+        );
+
+    const minutes =
+        Math.floor(
+            (distance %
+            (1000*60*60))
+            /
+            (1000*60)
+        );
+
+    const seconds =
+        Math.floor(
+            (distance %
+            (1000*60))
+            /
+            1000
+        );
+
+    document.getElementById("days").innerHTML=days;
+
+    document.getElementById("hours").innerHTML=hours;
+
+    document.getElementById("minutes").innerHTML=minutes;
+
+    document.getElementById("seconds").innerHTML=seconds;
+
+}
+
+
+updateCountdown();
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
+
+/* ================================
+   HEARTS
+================================ */
+
+function createHeart(){
+
+    const heart =
+        document.createElement("span");
+
+    heart.className="heart";
+
+    const symbols=[
+        "♥",
+        "♡",
+        "❤",
+        "💕"
+    ];
+
+    heart.innerHTML =
+        symbols[
+            Math.floor(
+                Math.random()
+                *
+                symbols.length
+            )
+        ];
+
+    heart.style.left =
+        Math.random()*100+"%";
+
+    heart.style.fontSize =
+        (
+            12 +
+            Math.random()*25
+        )+"px";
+
+    const duration =
+        6 +
+        Math.random()*7;
+
+    heart.style.animationDuration =
+        duration+"s";
+
+    hearts.appendChild(heart);
+
+    setTimeout(function(){
+
+        heart.remove();
+
+    },duration*1000);
+
+}
+
+
+function startHearts(){
+
+    for(
+        let i=0;
+        i<15;
+        i++
+    ){
+
+        setTimeout(
+            createHeart,
+            i*150
+        );
+
+    }
+
+    setInterval(
+        createHeart,
+        500
+    );
+
+}
+
+</script>
+
+</body>
+</html>
